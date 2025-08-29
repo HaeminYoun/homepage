@@ -1,0 +1,104 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: background-color 0.6s, color 0.6s;
+}
+
+nav a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+h1 {
+    color: #d2d2d2;
+    margin-bottom: 1rem;
+}
+
+h2, h3 {
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    flex: 1 1 calc(33% - 1rem);
+    padding: 1rem;
+    min-width: 220px;
+    transition: transform 0.5s, box-shadow 0.5s;
+    user-select: none;
+}
+
+.card p {
+    font-size: 0.95rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.2s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #222;
+    color: #fff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
