@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +17,28 @@
         <a href="#contact">Contact</a>
     </nav>
 
+    <div class="theme-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <label for="darkModeToggle">
+            <div class="toggle-ball"></div>
+        </label>
+    </div>
+
     <main>
         <section id="about">
             <h2>Introduce</h2>
-            <p>AlgoSphereDev, A Developer with a lot to learn.</p>
+            <p>I'll introduce my self AlgoSphereDev, A normal junior developer.</p>
+            <p>I'm currently working on various projects to improve my skills.
+                <br> My main language is Python, but I'm also familiar with C# and JavaScript.
+                <br> And I can use next.js, React, and TypeScript too.
+                <br> I'm also interested in game development and modding.
+            </p>
+            <p>I use Windows as my primary operating system.
+                <br> But I also studying Linux(Ubuntu, Kali, Debian, etc..) too.
+            </p>
+            <p>I'm always looking for new challenges and opportunities to learn.
+                <br> Feel free to contact me if you have any questions or would like to collaborate on a project.
+            </p>
         </section>
 
         <section id="projects">
@@ -45,7 +63,7 @@
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>Email: AlgoSphereDev@gmail.com</p>
+            <p>Email: <span id="email" class="copy-email">AlgoSphereDev@gmail.com</span></p>
             <p>GitHub: <a href="https://github.com/HaeminYoun" target="_blank">https://github.com/HaeminYoun</a></p>
         </section>
     </main>
@@ -57,7 +75,7 @@
             CC BY-NC-ND 4.0
         </a>
     </footer>
+
     <script src="js/main.js"></script>
-    <!-- <script src="js/fkingSmoothScroll.js"></script>   I won't fix it :( -->
 </body>
 </html>

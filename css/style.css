@@ -1,16 +1,28 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --header-bg: #222;
+    --header-text: #fff;
+    --card-bg: #fff;
+    --card-shadow: rgba(0,0,0,0.2);
+    --ball-light: #fff;
+    --ball-dark: #222;
+}
+
 body {
     font-family: 'Pretendard', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header {
-    background-color: #222;
-    color: #fff;
+    background-color: var(--header-bg);
+    color: var(--header-text);
     padding: 2rem 1rem;
     text-align: center;
 }
@@ -23,7 +35,7 @@ nav {
 nav a {
     margin: 0 1rem;
     text-decoration: none;
-    color: #222;
+    color: var(--text-color);
     font-weight: 500;
     padding: 0.3rem 0.6rem;
     border-radius: 4px;
@@ -45,15 +57,8 @@ section {
     margin-bottom: 3rem;
 }
 
-h1 {
-    color: #d2d2d2;
-    margin-bottom: 1rem;
-}
-
-h2, h3 {
-    color: #222;
-    margin-bottom: 1rem;
-}
+h1 { color: #d2d2d2; margin-bottom: 1rem; }
+h2, h3 { color: var(--text-color); margin-bottom: 1rem; }
 
 .card-container {
     display: flex;
@@ -62,19 +67,17 @@ h2, h3 {
 }
 
 .card {
-    background-color: #fff;
+    background-color: var(--card-bg);
     border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px var(--card-shadow);
     flex: 1 1 calc(33% - 1rem);
     padding: 1rem;
     min-width: 220px;
-    transition: transform 0.5s, box-shadow 0.5s;
+    transition: transform 0.5s, box-shadow 0.5s, background-color 0.3s, box-shadow 0.3s;
     user-select: none;
 }
 
-.card p {
-    font-size: 0.95rem;
-}
+.card p { font-size: 0.95rem; }
 
 .card:hover {
     transform: translateY(-5px);
@@ -88,17 +91,78 @@ a {
     transition: background-color 0.3s, color 0.2s;
 }
 
-a:hover {
-    color: #0056b3;
-}
+a:hover { color: #0056b3; }
 
 footer {
     text-align: center;
     padding: 1rem;
-    background-color: #222;
-    color: #fff;
+    background-color: var(--header-bg);
+    color: var(--header-text);
 }
 
-html {
-    scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+body.dark {
+    --bg-color: #121212;
+    --text-color: #ddd;
+    --header-bg: #1b1b1b;
+    --header-text: #fff;
+    --card-bg: #1e1e1e;
+    --card-shadow: rgba(0,0,0,0.6);
+}
+
+.theme-toggle {
+    width: 50px;
+    height: 24px;
+    margin: 0.5rem auto 1rem auto;
+    position: relative;
+}
+
+.theme-toggle input { display: none; }
+
+.theme-toggle label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+.theme-toggle .toggle-ball {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--ball-light);
+    transition: left 0.3s, background-color 0.3s;
+}
+
+.theme-toggle input:checked + label .toggle-ball {
+    left: 28px;
+    background-color: var(--ball-dark);
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(20px);
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }
