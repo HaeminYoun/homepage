@@ -32,3 +32,35 @@ function showToast(message) {   //토스트 메시지
         setTimeout(() => toast.remove(), 400);
     }, 2500);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const secretTag = document.querySelector("noway");
+    let clickCount = 0;
+    const maxClicks = 10;
+
+    function getRandomColor() {
+        return `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`; 
+    }
+
+    if (secretTag) {
+        secretTag.addEventListener("click", () => {
+            clickCount++;
+
+            if (clickCount == maxClicks) {
+                // 새 탭 열기
+                window.open("https://algosphere.dev", "_blank");
+
+                // 모든 요소 색 랜덤으로 변경
+                document.querySelectorAll("*").forEach(el => {
+                    // 글자색 랜덤
+                    el.style.color = getRandomColor();
+                    // 배경색 랜덤
+                    el.style.backgroundColor = getRandomColor();
+                });
+
+                // 다시 실행 원한다면 카운트 리셋
+                clickCount = 0;
+            }
+        });
+    }
+});
