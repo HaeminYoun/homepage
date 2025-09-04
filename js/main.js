@@ -37,6 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const secretTag = document.querySelector("noway");
     let clickCount = 0;
     const maxClicks = 10;
+    const audio2 = new Audio("../src/2.mp3");
+    audio2.loop = true;
+    audio2.volume = 1;
 
     function getRandomColor() {
         return `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`; 
@@ -45,10 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (secretTag) {
         secretTag.addEventListener("click", () => {
             clickCount++;
-            console.log(clickCount);
+            // console.log(clickCount);
+                const clickSound = new Audio("../src/1.mp3");
+                clickSound.volume = 0.8;
+                clickSound.play();
 
             if (clickCount == maxClicks) {
-                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1", "_blank");
+                audio2.play();
 
                 document.querySelectorAll("*").forEach(el => {
                     el.style.color = getRandomColor();
