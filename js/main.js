@@ -45,21 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (secretTag) {
         secretTag.addEventListener("click", () => {
             clickCount++;
+            console.log(clickCount);
 
             if (clickCount == maxClicks) {
-                // 새 탭 열기
-                window.open("https://algosphere.dev", "_blank");
+                window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1", "_blank");
 
-                // 모든 요소 색 랜덤으로 변경
                 document.querySelectorAll("*").forEach(el => {
-                    // 글자색 랜덤
                     el.style.color = getRandomColor();
-                    // 배경색 랜덤
                     el.style.backgroundColor = getRandomColor();
                 });
-
-                // 다시 실행 원한다면 카운트 리셋
-                clickCount = 0;
             }
         });
     }
