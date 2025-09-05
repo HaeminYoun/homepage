@@ -1,4 +1,4 @@
-const cards = document.querySelectorAll('.card');   // 프로젝트 카드
+const cards = document.querySelectorAll('.card');
 cards.forEach(card => {
     card.addEventListener('click', () => {
         const action = card.getAttribute('data-action');
@@ -8,19 +8,19 @@ cards.forEach(card => {
     });
 });
 
-const toggle = document.getElementById('darkModeToggle');   // 다크모드
+const toggle = document.getElementById('darkModeToggle');
 toggle.addEventListener('change', () => {
     document.body.classList.toggle('dark', toggle.checked);
 });
 
-const emailElement = document.getElementById('email');   // 메일 복사
+const emailElement = document.getElementById('email');
 emailElement?.addEventListener('click', () => {
     navigator.clipboard.writeText(emailElement.textContent).then(() => {
         showToast("Email copied to clipboard!");
     });
 });
 
-function showToast(message) {   //토스트 메시지
+function showToast(message) {
     let toast = document.createElement("div");
     toast.className = "toast";
     toast.textContent = message;
