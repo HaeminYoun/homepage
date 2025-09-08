@@ -25,6 +25,16 @@
     </div>
 
     <main>
+        <dialog id="projectDialog">
+            <div class="dialog-content">
+                <span id="closeDialog">&times;</span>
+                <span id="imageCounter" class="counter">1/1</span>
+                <button id="prevBtn" class="nav-btn">&#10094;</button>
+                <img id="dialogImage" src="" alt="Project Preview">
+                <button id="nextBtn" class="nav-btn">&#10095;</button>
+            </div>
+        </dialog>
+
         <section id="about">
             <h2>Introduce</h2>
             <p>I'll introduce my self AlgoSphereDev, A normal junior developer.</p>
@@ -72,7 +82,7 @@
                     <br> Project status: In development (Not completed)
                 </div>
             </div>
-            <div class="card" data-action="Coin Tread Site Simulator">
+            <div class="card" data-action="coin">
                 <h3>Coin Tread Site Simulator</h3>
                 <p>A web-based simulator for testing and developing Coin Tread strategies.
                 <br> I used Nextjs, React, and TypeScript to create this simulator.
@@ -85,20 +95,21 @@
                 </div>
             </div>
             <div class="card-container">
-                <div class="card" data-action="more">
+                <div class="card" data-action="tetris">
                     <h3>Python Tetris Project</h3>
                     <p>One of my mini projects. It's a simple Tetris game implemented in Python using Pygame.
                         <br> You can play the game using keyboard inputs.
-                        <br> Can check next block and hold block.(hold key is 'c')
+                        <br> Can hold block.(hold key is 'c')
+                        <br> also can soft drop and hard drop.(soft drop key is down arrow, hard drop key is spacebar.)
                         <br> It implements basic Tetris mechanics like a bag system, line clearing, and game over.
                         <br> This project is not open repo. (Private).
                     </p>
                     <br> Project status: Done
                 </div>
-                <div class="card" data-action="more">
+                <div class="card" data-action="minesweeper">
                     <h3> C lang MineSweeper Project</h3>
                     <p>One of my mini projects. It's a simple MineSweeper game implemented in C language.
-                        <br> You can play the game using keyboard inputs.(x y r/f for reveal/flag)
+                        <br> You can play the game using keyboard inputs.(r/f/c x y for reveal/flag/chord)
                         <br> Can check nearby mines count.
                         <br>If flagged all nearby mines, can try reveal nearby cells.
                         <br> It implements basic MineSweeper mechanics like flagging, revealing, and game over.
@@ -119,9 +130,7 @@
     <footer>
         &copy; 2025 AlgoSphereDev.
         <br>
-        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
-            CC BY-NC-ND 4.0
-        </a>
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>
     </footer>
 
     <script src="js/main.js"></script>

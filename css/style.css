@@ -168,3 +168,69 @@ body.dark {
     opacity: 1;
     transform: translateY(0);
 }
+
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    max-width: 600px;
+    width: 80%;
+    position: relative;
+}
+
+.dialog-content {
+    position: relative;
+    text-align: center;
+}
+
+#dialogImage {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+}
+
+#closeDialog {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0,0,0,0.6);
+    z-index: 10;
+}
+
+.counter {
+    position: absolute;
+    top: 8px;
+    right: 50px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: bold;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+#prevBtn { left: 10px; }
+#nextBtn { right: 10px; }
+
+.nav-btn:hover {
+    background: rgba(0,0,0,0.7);
+}
