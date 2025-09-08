@@ -64,6 +64,7 @@ h2, h3 { color: var(--text-color); margin-bottom: 1rem; }
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .card {
@@ -75,6 +76,7 @@ h2, h3 { color: var(--text-color); margin-bottom: 1rem; }
     min-width: 220px;
     transition: transform 0.5s, box-shadow 0.5s, background-color 0.3s, box-shadow 0.3s;
     user-select: none;
+    margin-top: 0.5rem;
 }
 
 .card p { font-size: 0.95rem; }
