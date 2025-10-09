@@ -51,8 +51,10 @@ cards.forEach(card => {
             openDialog();
         } else if (action === 'discord') {
             window.location.href = 'https://discord.com/oauth2/authorize?client_id=1355963437716476238';
-        } else if (action === 'game' || action === 'terraria') {
+        } else if (action === 'terraria') {
             window.location.href = 'https://steamcommunity.com/sharedfiles/filedetails/?id=3583667968';
+        } else if (action === 'game') {
+            alert("Game 페이지는 준비 중입니다!");
         }
     });
 });
