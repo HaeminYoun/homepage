@@ -52,7 +52,7 @@ cards.forEach(card => {
         } else if (action === 'discord') {
             window.location.href = 'https://discord.com/oauth2/authorize?client_id=1355963437716476238';
         } else if (action === 'game' || action === 'terraria') {
-            alert(`${action} page is not ready yet..`);
+            window.location.href = 'https://steamcommunity.com/sharedfiles/filedetails/?id=3583667968';
         }
     });
 });
