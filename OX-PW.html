@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>OX Demo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    /*이거 하나때문에 css에 이런걸 집어넣고 싶진 않네..*/
+    :root {
+      --bg-color: #f5f5f5;
+      --text-color: #333;
+      --card-bg: #fff;
+      --card-shadow: rgba(0,0,0,0.2);
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #ddd;
+      --card-bg: #1e1e1e;
+      --card-shadow: rgba(0,0,0,0.6);
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Pretendard', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .ox-wrapper {
+      position: relative;
+      background: var(--card-bg);
+      color: var(--text-color);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 3px 10px var(--card-shadow);
+      box-sizing: border-box;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .ox-wrapper h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .ox-note {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 0.6rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.15);
+      background: transparent;
+      color: var(--text-color);
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.25s;
+    }
+    input[type="password"]:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .ox-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .ox-btn {
+      background-color: transparent;
+      border: 1px solid rgba(0,0,0,0.2);
+      color: var(--text-color);
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+    }
+
+    .ox-btn.active, .ox-btn:hover {
+      background-color: #007bff;
+      border-color: #007bff;
+      color: #fff;
+    }
+
+    .ox-mode {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    .ox-result {
+      margin-top: 1.3rem;
+      text-align: center;
+      font-family: ui-monospace, 'Pretendard', monospace;
+      font-size: 1.4rem;
+      letter-spacing: 0.3rem;
+      user-select: none;
+    }
+
+    .ox-count {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #28a745;
+    }
+
+    .ox-help {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .ox-item {
+      display: inline-block;
+      width: 22px;
+      text-align: center;
+      border-radius: 4px;
+      margin: 0 2px;
+      font-weight: 600;
+    }
+
+    .ox-item.ok { color: #28a745; }
+    .ox-item.no { color: #dc3545; }
+
+    body.dark input[type="password"] {
+      border-color: rgba(255,255,255,0.2);
+      background-color: rgba(255,255,255,0.05);
+    }
+
+    body.dark .ox-btn {
+      border-color: rgba(255,255,255,0.2);
+    }
+    body.dark .ox-btn.active, body.dark .ox-btn:hover {
+      background-color: #339aff;
+      border-color: #339aff;
+    }
+
+    body.dark .ox-note {
+    color: #ff6b6b;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      width: 50px;
+      height: 24px;
+    }
+
+    .theme-toggle input { display: none; }
+
+    .theme-toggle label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #ccc;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle .toggle-ball {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fff;
+      transition: left 0.3s, background-color 0.3s;
+    }
+
+    .theme-toggle input:checked + label .toggle-ball {
+      left: 28px;
+      background-color: #222;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="ox-wrapper">
+    <h2>비밀번호 O/X 데모</h2>
+    <p class="ox-note">로컬 데모 전용입니다. 실제 서비스에 사용하기엔 보안에 취약합니다.</p>
+
+    <label for="pw">비밀번호 입력</label>
+    <input id="pw" type="password" placeholder="비밀번호 입력" autocomplete="off">
+
+    <div class="ox-controls">
+      <button id="unsafe" class="ox-btn active">Unsafe</button>
+      <button id="safe" class="ox-btn">Safe</button>
+      <span class="ox-mode" id="modeLabel">모드: 위치별</span>
+    </div>
+
+    <div class="ox-result" id="resultArea" aria-live="polite"></div>
+    <div class="ox-count" id="countArea"></div>
+
+    <div class="theme-toggle">
+      <input type="checkbox" id="darkToggle">
+      <label for="darkToggle"><div class="toggle-ball"></div></label>
+    </div>
+  </div>
+
+  <script>
+    const TARGET_PASSWORD = "dQw4w9WgXcQ";    //NGGYU
+
+    const pwInput = document.getElementById('pw');
+    const resultArea = document.getElementById('resultArea');
+    const countArea = document.getElementById('countArea');
+    const modeLabel = document.getElementById('modeLabel');
+    const btnUnsafe = document.getElementById('unsafe');
+    const btnSafe = document.getElementById('safe');
+    const darkToggle = document.getElementById('darkToggle');
+    let mode = 'unsafe';
+
+    darkToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark', darkToggle.checked);
+    });
+
+    btnUnsafe.addEventListener('click', ()=>{
+      mode = 'unsafe';
+      btnUnsafe.classList.add('active');
+      btnSafe.classList.remove('active');
+      modeLabel.textContent = '모드: 위치별';
+      updateUI();
+    });
+    btnSafe.addEventListener('click', ()=>{
+      mode = 'safe';
+      btnSafe.classList.add('active');
+      btnUnsafe.classList.remove('active');
+      modeLabel.textContent = '모드: 개수만';
+      updateUI();
+    });
+    pwInput.addEventListener('input', updateUI);
+
+    function updateUI(){
+      const val = pwInput.value || "";
+      if(mode === 'unsafe'){
+        const out = comparePerPosition(val, TARGET_PASSWORD);
+        resultArea.innerHTML = out.map(c=>`<span class="ox-item ${c==='O'?'ok':'no'}">${c}</span>`).join('');
+        countArea.textContent = `일치 문자 수: ${countMatches(val, TARGET_PASSWORD)} / ${TARGET_PASSWORD.length}`;
+      } else {
+        const m = countMatches(val, TARGET_PASSWORD);
+        resultArea.textContent = '●'.repeat(m) + '○'.repeat(Math.max(0, TARGET_PASSWORD.length - m));
+        countArea.textContent = `일치 문자 수(위치 무관): ${m}`;
+      }
+    }
+
+    function comparePerPosition(input, target){
+      const a = input.split('');
+      const b = target.split('');
+      const len = Math.max(a.length, b.length);
+      const out = [];
+      for(let i=0;i<len;i++){
+        const ca = a[i] ?? '';
+        const cb = b[i] ?? '';
+        out.push(ca && cb && ca === cb ? 'O' : 'X');
+      }
+      return out;
+    }
+
+    function countMatches(input, target){
+      const ia = input.split('');
+      const ta = target.split('');
+      const freq = {};
+      for(const c of ta){ freq[c] = (freq[c]||0)+1; }
+      let cnt = 0;
+      for(const c of ia){
+        if(freq[c] > 0){ cnt++; freq[c]--; }
+      }
+      return cnt;
+    }
+    updateUI();
+  </script>
+</body>
+</html>
