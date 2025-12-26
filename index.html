@@ -37,99 +37,132 @@
 
         <section id="about">
             <h2>Introduce</h2>
-            <p>I'll introduce my self AlgoSphereDev, A normal junior developer.</p>
-            <p>I'm currently working on various projects to improve my skills.
-                <br> My main language is Python, but I'm also familiar with C# and JavaScript.
-                <br> And I can use next.js, React, and TypeScript too.
-                <br> I'm also interested in game development and modding.
+            <p>I am AlgoSphereDev, a common junior developer.</p>
+            <p>
+                I'm currently working on various projects to improve my skills.<br>
+                My main language is Python, but I'm also familiar with C# and JavaScript.<br>
+                I use Next.js, React, and TypeScript for web development,<br>
+                and I have a strong interest in game development and modding.
             </p>
-            <p>I use Windows 11 as my primary operating system.
-                <br> But I also studying Linux(Ubuntu, Kali, Debian, etc..) too.
+            <p>
+                Windows 11 is my primary operating system,<br>
+                but I am also studying various Linux distributions (Ubuntu, Kali, Debian, etc.).
             </p>
-            <p>I'm always looking for new challenges and opportunities to learn.
-                <br> Feel free to contact me if you have any questions or would like to collaborate on a project.
+            <p>
+                I'm always looking for new challenges and opportunities to learn.<br>
+                Feel free to contact me for questions or collaboration.
             </p>
         </section>
 
         <section id="projects">
             <h2>Projects</h2>
+            
             <div class="card-container">
                 <div class="card" data-action="game">
                     <h3>Game Development Project</h3>
-                    <p>Use Unity engine to create a rhythm game focused on keyboard inputs.
-                        <br> But this project is currently on hold. (Not completed, TBD)
+                    <p>
+                        A rhythm game developed with the Unity engine, focused on keyboard-based gameplay.<br>
+                        This project is currently on hold for rebuilding.
                     </p>
-                    <br> Game name: [QWERTY rhythm] (dev name. It can be changed.)
-                    <br> Project status: On hold (Rebuilding plans)
+                    <strong>Game Name:</strong> [QWERTY rhythm] (Working title, subject to change)<br>
+                    <strong>Status:</strong> On hold (Rebuilding plans)
                 </div>
+
                 <div class="card" data-action="discord">
                     <h3>Discord Bot Development</h3>
-                    <p>Discord bot development project using Python.
-                        <br> I made an Eternal Return stats bot "Mythril 0"
-                        <br> /전적 [nickname] to view player stats. (rank game only)
-                        <br> /동접 to view current online players count.
-                        <br> /시즌 to view end of season date. and remaining time.
-                        <br> /등록 [nickname] to register your nickname to this bot's DB. (If you want delete your nickname, please contact me.)
-                        <br> /봇랭킹 to view MMR ranking of registered users on DB.
-                        <br> /서버등록 [nickname] to register your server's nickname to discord server.(It can managed by discord server admin)
-                        <br> /서버랭킹 to view MMR ranking of registered users on this discord server.
-                        <br> /서버등록목록, /서버등록삭제 to view/delete registered nicknames on this discord server.(Admin only)
-                        <br> /오늘의험체 or /오험체 to get subject recommendation for today. (All random)
-                        <br> I used Eternal Return Open API.
+                    <p>
+                        A Python-based Discord bot, "Mythril 0," providing "Eternal Return" statistics.<br>
+                        Utilizes the Eternal Return Open API to fetch real-time data.
                     </p>
-                    <br> Bot name: [Mythril 0]
-                    <br> Project status: Active (v1.7.2)
+                    <p>
+                        <strong>Main Commands:</strong><br>
+                        • /전적 [nickname]: View player stats (Rank games only)<br>
+                        • /동접: View current concurrent player count<br>
+                        • /시즌: View season end date and time remaining<br>
+                        • /등록 [nickname]: Register your nickname in the bot's database<br>
+                        • /봇랭킹: View MMR rankings of registered users<br>
+                        • /서버등록: Register a server-specific nickname<br>
+                        • /오늘의험체: Get a random character recommendation<br>
+                        • /커트라인: View current MMR cutlines for Demigod/Eternity
+                    </p>
+                    <p>
+                        <strong>Major Milestone (v1.8):</strong><br>
+                        With the API tier upgrade, the entire bot was refactored using <strong>async/await</strong> to handle higher request limits efficiently.
+                        This ensures stable performance even with multiple concurrent users.
+                    </p>
+                    <strong>Bot Name:</strong> [Mythril 0]<br>
+                    <strong>Project Status:</strong> Active (v1.8)
                 </div>
+
                 <div class="card" data-action="terraria">
                     <h3>Terraria Mod Development</h3>
-                    <p>Use tModLoader and C# to create custom mods for Terraria.
-                    <br> This mod is inspired by Maplestory's cube system.
-                    <br> It adds 5 grades of upgrade items that can be used to upgrade tools.
-                    <br> Each grade has a different success rate and can add different stats to the tool.
-                    <br> Item can get each else 3 options randomly.
-                    <br> It also supports Accessory now.(1.1 update)
-                    <br> This mod is on steam workshop.
+                    <p>
+                        Developed using tModLoader and C#, this mod introduces an upgrade system inspired by MapleStory’s "Potential" mechanics.<br>
+                        It features 5 distinct tiers of upgrade items that can be applied to tools, accessories, and armor.
                     </p>
-                    <br> Mod name: [More Potential Tools (MPT)]
-                    <br> Korean Localization mod name: [More Potential Tools KR]
-                    <br> Description: A mod that adds some upgrade items for tools.
-                    <br> Project status: Active (v1.1.3)
+                    <p>
+                        <strong>Key Features:</strong><br>
+                        • Varying success rates based on item grade.<br>
+                        • Re-rolls all three bonus options (potential lines) simultaneously per upgrade.<br>
+                        • Full support for Tools, Accessories, and Armor sets.
+                    </p>
+                    <p>Available now on the <strong>Steam Workshop</strong>.</p>
+
+                    <strong>Mod Name:</strong> [More Potential Tools (MPT)]<br>
+                    <strong>Languages:</strong> EN (Default), KR, JP<br>
+                    <strong>Project Status:</strong> Active (v1.2.1)
                 </div>
             </div>
-            <div class="card" data-action="coin">
-                <h3>Coin Tread Site Simulator</h3>
-                <p>A web-based simulator for testing and developing Coin Tread strategies.
-                <br> I used Nextjs, React, and TypeScript to create this simulator.
-                <br> I implemented 3 types of coin, and daily claim system, and ranking system.
-                <br> You can make buy/sell orders. and also you can see your total assets and wallet.
-                <br> Coin prices are randomly generated every 3seconds.
-                <br> This project is not open repo. (Private).
-                </p>
-                <br> Project status: Done
-                </div>
-            </div>
+
             <div class="card-container">
+                <div class="card" data-action="coin">
+                    <h3>Coin Trade Site Simulator</h3>
+                    <p>
+                        A web-based simulator designed to test and develop cryptocurrency trading strategies.<br>
+                        Built with <strong>Next.js, React, and TypeScript</strong> for a robust and responsive experience.
+                    </p>
+                    <p>
+                        <strong>Key Features:</strong><br>
+                        • Supports 3 types of coins with prices updating every 3 seconds.<br>
+                        • Functional daily reward (claim) and competitive ranking systems.<br>
+                        • Real-time asset tracking including wallet balances and buy/sell orders.
+                    </p>
+                    <p><em>* This is a private repository.</em></p>
+
+                    <strong>Project Status:</strong> Done
+                </div>
+
                 <div class="card" data-action="tetris">
                     <h3>Python Tetris Project</h3>
-                    <p>One of my mini projects. It's a simple Tetris game implemented in Python using Pygame.
-                        <br> You can play the game using keyboard inputs.
-                        <br> Can hold block.(hold key is 'c')
-                        <br> also can soft drop and hard drop.(soft drop key is down arrow, hard drop key is spacebar.)
-                        <br> It implements basic Tetris mechanics like a bag system, line clearing, and game over.
-                        <br> This project is not open repo. (Private).
+                    <p>
+                        A classic Tetris clone implemented in <strong>Python using Pygame</strong> to practice core game logic and state management.
                     </p>
-                    <br> Project status: Done
+                    <p>
+                        <strong>Key Features:</strong><br>
+                        • Implementation of the <strong>7-bag system</strong> for fair piece randomization.<br>
+                        • Supports essential moves: <strong>Hold (C key)</strong>, Soft Drop, and Hard Drop.<br>
+                        • Core mechanics include line clearing, score calculation, and Game Over logic.
+                    </p>
+                    <p><em>* This is a private repository.</em></p>
+
+                    <strong>Project Status:</strong> Done
                 </div>
+
                 <div class="card" data-action="minesweeper">
-                    <h3> C lang MineSweeper Project</h3>
-                    <p>One of my mini projects. It's a simple MineSweeper game implemented in C language.
-                        <br> You can play the game using keyboard inputs.(r/f/c x y for reveal/flag/chord)
-                        <br> Can check nearby mines count.
-                        <br>If flagged all nearby mines, can try reveal nearby cells.
-                        <br> It implements basic MineSweeper mechanics like flagging, revealing, and game over.
-                        <br> This project is not open repo. (Private).
-                    </p>
-                    <br> Project status: Done
+                    <h3>C Language Minesweeper</h3>
+                        <p>
+                            A classic Minesweeper game built with <strong>C</strong>, focusing on grid-based logic and recursive area reveal mechanics.
+                        </p>
+                        <p>
+                            <strong>Key Features:</strong><br>
+                            • <strong>Coordinate-based Control:</strong> Use commands (Reveal, Flag, Chord) with X and Y coordinates.<br>
+                            • <strong>Chording Logic:</strong> Quickly clear adjacent cells once the required mines are flagged.<br>
+                            • <strong>Recursive Expansion:</strong> Efficiently reveals empty areas using recursive algorithms.<br>
+                            • Implements standard rules including mine counts and Game Over states.
+                        </p>
+                        <p><em>* This is a private repository.</em></p>
+
+                        <strong>Project Status:</strong> Done
                 </div>
             </div>
         </section>
@@ -142,8 +175,7 @@
     </main>
 
     <footer>
-        &copy; 2025 AlgoSphereDev.
-        <br>
+        &copy; 2025 AlgoSphereDev.<br>
         <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>
     </footer>
 

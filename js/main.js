@@ -1,115 +1,107 @@
-const cards = document.querySelectorAll('.card');
-
-const dialog = document.getElementById("projectDialog");
-const dialogImage = document.getElementById("dialogImage");
-const closeDialog = document.getElementById("closeDialog");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const counter = document.getElementById("imageCounter");
-
 const imageMap = {
     coin: ["../src/img/coin1.png", "../src/img/coin2.png", "../src/img/coin3.png", "../src/img/coin4.png", "../src/img/coin5.png"],
     tetris: ["../src/img/tetris1.png", "../src/img/tetris2.png", "../src/img/tetris3.png"],
     minesweeper: ["../src/img/minesweeper1.png", "../src/img/minesweeper2.png", "../src/img/minesweeper3.png", "../src/img/minesweeper4.png", "../src/img/minesweeper5.png", "../src/img/minesweeper6.png"],
 };
 
-let currentProject = null;
-let currentIndex = 0;
-let scrollY = 0;
+const state = {
+    currentProject: null,
+    currentIndex: 0,
+    lastScrollY: 0
+};
+
+const dom = {
+    dialog: document.getElementById("projectDialog"),
+    dialogImg: document.getElementById("dialogImage"),
+    counter: document.getElementById("imageCounter"),
+    themeToggle: document.getElementById('darkModeToggle'),
+    email: document.getElementById('email'),
+    cards: document.querySelectorAll('.card'),
+    noway: document.querySelector("noway")
+};
 
 function updateDialog() {
-    if (!currentProject) return;
-    const images = imageMap[currentProject];
-    dialogImage.src = images[currentIndex];
-    counter.textContent = `${currentIndex + 1}/${images.length}`;
+    if (!state.currentProject) return;
+    const images = imageMap[state.currentProject];
+    dom.dialogImg.src = images[state.currentIndex];
+    dom.counter.textContent = `${state.currentIndex + 1}/${images.length}`;
 }
 
 function openDialog() {
-    scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    dialog.showModal();
+    state.lastScrollY = window.scrollY;
+    document.body.style.cssText = `
+        position: fixed; 
+        top: -${state.lastScrollY}px; 
+        width: 100%;
+    `;
+    dom.dialog.showModal();
 }
 
 function closeDialogFunc() {
-    dialog.close();
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    window.scrollTo(0, scrollY);
+    dom.dialog.close();
+    document.body.style.cssText = "";
+    window.scrollTo(0, state.lastScrollY);
 }
 
-cards.forEach(card => {
+dom.cards.forEach(card => {
     card.addEventListener('click', () => {
         const action = card.getAttribute('data-action');
 
         if (imageMap[action]) {
-            currentProject = action;
-            currentIndex = 0;
+            state.currentProject = action;
+            state.currentIndex = 0;
             updateDialog();
             openDialog();
         } else if (action === 'discord') {
-            window.location.href = 'https://discord.com/oauth2/authorize?client_id=1355963437716476238';
+            window.open('https://discord.com/oauth2/authorize?client_id=1355963437716476238', '_blank');
         } else if (action === 'terraria') {
-            window.location.href = 'https://steamcommunity.com/sharedfiles/filedetails/?id=3583667968';
+            window.open('https://steamcommunity.com/sharedfiles/filedetails/?id=3583667968', '_blank');
         } else if (action === 'game') {
             alert("Game 페이지는 준비 중입니다!");
         }
     });
 });
 
-dialog.addEventListener("click", (e) => {
-    const rect = dialog.getBoundingClientRect();
-    const clickedInDialog =
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom;
-
-    if (!clickedInDialog) {
-        closeDialogFunc();
-    }
+dom.dialog.addEventListener("click", (e) => {
+    if (e.target === dom.dialog) closeDialogFunc();
 });
 
-closeDialog.addEventListener("click", () => {
-    closeDialogFunc();
-});
+document.getElementById("closeDialog").addEventListener("click", closeDialogFunc);
 
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && dialog.open) {
-        closeDialogFunc();
-    }
-});
-
-prevBtn.addEventListener("click", () => {
-    if (!currentProject) return;
-    const images = imageMap[currentProject];
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
+document.getElementById("prevBtn").addEventListener("click", () => {
+    const images = imageMap[state.currentProject];
+    state.currentIndex = (state.currentIndex - 1 + images.length) % images.length;
     updateDialog();
 });
 
-nextBtn.addEventListener("click", () => {
-    if (!currentProject) return;
-    const images = imageMap[currentProject];
-    currentIndex = (currentIndex + 1) % images.length;
+document.getElementById("nextBtn").addEventListener("click", () => {
+    const images = imageMap[state.currentProject];
+    state.currentIndex = (state.currentIndex + 1) % images.length;
     updateDialog();
 });
 
-const toggle = document.getElementById('darkModeToggle');
-toggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark', toggle.checked);
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && dom.dialog.open) closeDialogFunc();
 });
 
-const emailElement = document.getElementById('email');
-emailElement?.addEventListener('click', () => {
-    navigator.clipboard.writeText(emailElement.textContent).then(() => {
+dom.themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark', dom.themeToggle.checked);
+});
+
+dom.email?.addEventListener('click', () => {
+    const text = dom.email.textContent;
+
+    const pop = new Audio("../src/audio/1.mp3");
+    pop.volume = 0.5;
+    pop.play();
+
+    navigator.clipboard.writeText(text).then(() => {
         showToast("Email copied to clipboard!");
     });
 });
 
 function showToast(message) {
-    let toast = document.createElement("div");
+    const toast = document.createElement("div");
     toast.className = "toast";
     toast.textContent = message;
     document.body.appendChild(toast);
@@ -122,31 +114,31 @@ function showToast(message) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const secretTag = document.querySelector("noway");
     let clickCount = 0;
-    const maxClicks = 10;
-    const audio2 = new Audio("../src/audio/2.mp3");
-    audio2.loop = true;
-    audio2.volume = 1;
+    const MAX_CLICKS = 10;
+    const screamAudio = new Audio("../src/audio/2.mp3");
+    screamAudio.loop = true;
 
-    function getRandomColor() {
-        return `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`; 
-    }
+    const getRandomColor = () => `hsl(${Math.floor(Math.random() * 360)}, 80%, 50%)`;
 
-    if (secretTag) {
-        secretTag.addEventListener("click", () => {
+    if (dom.noway) {
+        dom.noway.addEventListener("click", () => {
             clickCount++;
-            const clickSound = new Audio("../src/audio/1.mp3");
-            clickSound.volume = 0.8;
-            clickSound.play();
+            
+            const pop = new Audio("../src/audio/1.mp3");
+            pop.volume = 0.6;
+            pop.play();
 
-            if (clickCount == maxClicks) {
-                audio2.play();
+            if (clickCount === MAX_CLICKS) {
+                document.body.classList.add('chaos-mode', 'shake');
+                screamAudio.play();
 
-                document.querySelectorAll("*").forEach(el => {
-                    el.style.color = getRandomColor();
-                    el.style.backgroundColor = getRandomColor();
-                });
+                setInterval(() => {
+                    document.querySelectorAll("*").forEach(el => {
+                        el.style.color = getRandomColor();
+                        el.style.backgroundColor = `hsl(${Math.floor(Math.random() * 360)}, 100%, 5%)`;
+                    });
+                }, 100);
             }
         });
     }
